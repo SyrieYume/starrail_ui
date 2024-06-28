@@ -1,0 +1,168 @@
+<style>
+setting-list {
+    border-radius: 8px;
+    
+}
+
+input[type='number'] {
+    background-color: rgb(255,255,255,0.5);
+    border: 1px solid rgb(100,100,100, 0.5);
+    border-radius: 4px;
+    padding: 4px;
+}
+
+#input_selectBg {
+    width: 1px;
+    opacity: 0;
+}
+
+#bubblesList {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-items: center;
+}
+
+.bubbleContainer {
+    border: 2px solid transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 40px 35px 40px;
+}
+
+.bubbleContainer:hover, .bubbleContainer.select {
+    border: 2px solid rgb(128, 128, 128, 0.5) !important;
+    border-radius: 8px;
+}
+
+.bubble {
+    width: fit-content;
+    font-size: 1.15rem;
+    padding: 12px 17px 8px 17px;
+    border: 10px solid transparent;
+    border-image-repeat: stretch;
+
+    color: #ffffff;
+    border-image-slice: 49% 49% fill !important;
+    border-image-width: 40px 48px !important;
+    pointer-events: none;
+}
+
+.defaultBubble {
+    border: none;
+    color: rgb(0,0,0);
+    border-radius: 13px;
+    background-color: rgb(209,189,149);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 2px;
+    box-shadow: 1px 3px rgb(156,156,156);
+    pointer-events: none;
+}
+
+.bubbleName {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(100,100,100);
+    font-weight: bold;
+    pointer-events: none;
+}
+
+</style>
+
+<setting-section data-title="界面">
+    <setting-pannel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="row"> 
+                <div>
+                    <setting-text>背景图片</setting-text>
+                    <setting-text id="text_bgPath" data-type="secondary">插件目录/res/background.jpg</setting-text>
+                </div>
+                
+                <input type="file" id="input_selectBg"/>
+                <label style="cursor: pointer;" for="input_selectBg">
+                    <setting-button style="pointer-events: none;" data-type="secondary">选择图片</setting-button>
+                </label>
+            </setting-item>
+
+            <setting-item data-direction="row">
+                <div>
+                    <setting-text>背景图片模糊</setting-text>
+                    <setting-text data-type="secondary">默认值: 8, 单位为px</setting-text>
+                </div>
+                
+                <input type="number" id="input_setBgBlur" value="8">
+            </setting-item>
+
+            <setting-item data-direction="row">
+                <div>
+                    <setting-text>背景图片亮度</setting-text>
+                    <setting-text data-type="secondary">默认值: 50, 单位为%</setting-text>
+                </div>
+                
+                <input type="number" id="input_setBgBrightness" value="50">
+            </setting-item>
+
+            <setting-item data-direction="row">
+                <div>
+                    <setting-text>聊天窗口不透明度</setting-text>
+                    <setting-text data-type="secondary">默认值: 95, 单位为%</setting-text>
+                </div>
+                
+                <input type="number" id="input_setChatWindowOpacity" value="95">
+            </setting-item>
+        </setting-list>
+    </setting-pannel>
+</setting-section>
+
+<setting-divider></setting-divider>
+<br/>
+
+<setting-section data-title="气泡框">
+    <setting-pannel>
+        <setting-list data-direction="column">
+            <div id="bubblesList">
+                <div id="defaultBubble" class="bubbleContainer select">
+                    <div class="bubble defaultBubble">你好</div>
+                    <b class="bubbleName">语言的艺术</b>
+                </div>
+            </div>
+        </setting-list>
+        
+        
+    </setting-pannel>
+</setting-section>
+
+<setting-divider></setting-divider>
+<br/>
+
+<setting-section data-title="关于">
+    <setting-pannel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="row"> 
+                <div>
+                    <setting-text>版本</setting-text>
+                    <setting-text id="versionText" data-type="secondary">0.1.0</setting-text>
+                </div>
+                <setting-button id="updateBtn" data-type="secondary" style="display:none;">前往plugininstaller更新</setting-button>
+                <setting-button id="checkVersionBtn" data-type="secondary">检查更新</setting-button>
+            </setting-item>
+
+            <setting-item>
+                <div>
+                    <setting-text>Github仓库</setting-text>
+                    <setting-text data-type="secondary">https://github.com/SyrieYume/starrail_ui</setting-text>
+                </div>
+                
+                <setting-button id="gotoGithub" data-type="secondary">前往</setting-button>
+
+            </setting-item>
+        </setting-list>
+    </setting-pannel>
+</setting-section>
+
+<setting-divider></setting-divider>
+<br/><br/>

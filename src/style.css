@@ -1,0 +1,261 @@
+@font-face {
+    font-family: "StarRailFont";
+    src: url("appimg://${plugin_path}/res/StarRailFont.ttf") format("truetype");
+}
+
+/* 设置所有字体为星穹铁道同款字 
+ * 字体来自星穹铁道游戏目录下的 StarRail_Data\StreamingAssets\MiHoYoSDKRes\HttpServerResources\font\zh-cn.ttf */
+* {
+    font-family: "StarRailFont";
+}
+
+/* 隐藏部分组件的背景色 */
+.tab-container,.two-col-layout,.two-col-layout__aside,.recent-contact,.list-toggler,.recent-contact-list {
+    background: none !important;
+}
+
+#app > .container {
+    position: relative;
+    overflow-y: hidden;
+}
+
+/* 窗口的背景图 */
+#app > .container::before {
+    content: " ";
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: url("appimg://${background_img}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(${background_blur}px) brightness(${background_brightness}%);
+    z-index: -1;
+}
+
+/* 让 窗口右上角的按钮 和 聊天界面右上角的工具栏 自动隐藏 */
+.window-control-area {
+    opacity: 0;
+    transition: all .7s ease;
+}
+
+.window-control-area:hover {
+    opacity: 100%;
+    background-color: rgb(255,255,255,0.6);
+}
+
+.chat-header .panel-header__action {
+    opacity: 0;
+}
+
+.chat-header:hover .panel-header__action {
+    opacity: 100%;
+    transition: all .7s ease;
+}
+
+.chat-header {
+    margin-top: -10px;
+    height: 80px !important;
+}
+
+.chat-header .background-mask {
+    box-shadow: 0 1.2px rgb(172, 172, 172, 0.5);
+}
+
+.two-col-layout__main {
+    position: relative;
+    margin: 20px;
+    border-radius: 1px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 0 3px rgb(0,0,0,0.5);
+}
+
+
+.two-col-layout__main::before {
+    content: " ";
+    z-index: -1;
+    position: absolute;
+    top: 5px;
+    left: -6px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid rgb(172, 172, 172, 0.5);
+}
+
+.two-col-layout__main::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+    display: block;
+    width: 130px;
+    height: 130px;
+    background-image: url("appimg://${plugin_path}/res/img_header.png");
+    background-position: 0 0;
+    background-size: 130px 130px;
+    background-repeat: no-repeat;
+}
+
+.two-col-layout__main {
+    background-color: rgb(221, 221, 221, ${chatWindow_Opacity}%);
+}
+
+
+.message-container {
+    --avatar_size_2: 64px !important;
+}
+
+.msg-content-container {
+    margin: 4px 6px;
+}
+
+.msg-content-container:not(.mix-message__container--market-face):not(.mix-message__container--pic) {
+    background-color: rgb(237,237,237);
+    border-radius: 13px;
+    border-top-left-radius: 2px;
+    padding: 12px 17px 8px 17px;
+    box-shadow: -1px 2px rgb(156,156,156);
+}
+
+.message-container--align-right .msg-content-container:not(.mix-message__container--market-face):not(.mix-message__container--pic) {
+    background-color: rgb(209,189,149);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 2px;
+    box-shadow: 1px 3px rgb(156,156,156);
+    color: rgb(40,40,40);
+
+    /* 注意下面这段注释不能删！！ */
+    /* Bubble Style */
+}
+
+.message-container:not(:has(.user-name)) .msg-content-container  {
+    margin-top: 30px !important;
+}
+
+.message-content__wrapper span, .markdown-element p{
+    --font_size_3: 1.15rem;
+    color: rgb(0,0,0);
+    font-size: 1.15rem !important;
+    font-weight: bold !important;
+}
+
+.message-container--align-right .message-content__wrapper span {
+    color: inherit !important;
+}
+
+.text-element--at {
+    color: var(--brand_standard) !important;
+}
+
+.user-name {
+    margin: 4px 6px;
+}
+
+.user-name .text-ellipsis {
+    color: rgb(100, 100, 100) !important;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.chat-header__contact-name {
+    color: black;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.gray-tip-content.gray-tip-element {
+    font-size: larger;
+    font-weight: bold;
+    color: rgb(108, 108, 108);
+    margin: 2px;
+}
+
+.gray-tip-content.gray-tip-element::before {
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+    background-image: url("appimg://${plugin_path}/res/icon_tip.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.chat-input-area {
+    box-shadow: inset 0px 2px rgb(172, 172, 172, 0.25) !important;
+    background-color: rgb(100,100,100,0.05);
+}
+
+.send-btn-wrap {
+    border-radius: 1px !important;
+    box-shadow: 1px 1px 2px rgb(172, 172, 172, 0.75) !important;
+    background-color: rgb(234,234,234) !important;
+}
+
+.send-setting__wrapper i, .send-msg {
+    color: rgb(18,18,18) !important;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.func-bar i {
+    opacity: 0.75;
+}
+
+.q-notification.chat-msg-area__tip--bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none !important;
+    box-shadow: none;
+    outline: none !important;
+}
+
+.two-col-layout__aside {
+    margin: 10px;
+    margin-left: 20px;
+    box-sizing: content-box;
+}
+
+.search-input__icon,.q-input__inner,.contact-adder-btn, .top-bar__adder i  {
+    color: rgb(200,200,200) !important;
+}
+
+.recent-contact-item {
+    border: 2px solid rgb(172, 172, 172,0.35);
+    border-radius: 2px;
+    margin-bottom: 8px;
+    background-color: rgb(0,0,0, 0.4);
+    transition: all .5s ease;
+}
+
+
+.recent-contact-item:hover {
+    border: 2px solid rgb(231,231,234, 0.75);
+    background-color: rgb(0,0,0, 0.1);
+}
+
+.recent-contact-list .list-item .list-item__content {
+    padding: 100px !important;
+    height: calc(var(--avatar_size_3) + 30px) !important;
+}
+
+.recent-contact-item.list-item--selected .list-item__content {
+    background-color: rgb(0,0,0,0.6);
+}
+
+.recent-contact-item .avatar {
+    --avatar_size_3: 52px;
+}
+
+.recent-contact-item .list-item__title .main-info {
+    color: rgb(200,200,200) !important;
+    font-size: 0.95rem;
+}

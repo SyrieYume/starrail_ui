@@ -1,0 +1,31 @@
+[
+    {
+        "name": "兔子在哪里？",
+        "imgPath": "bubbleStyle2.svg",
+        "css": "border-width: 20px 8px 8px 18px;"
+    },
+    
+    {
+        "name": "次元扑满",
+        "imgPath": "bubbleStyle3.svg",
+        "css": "border-width: 18px 8px 8px 16px;"
+    },
+    
+    {
+        "name": "星体培养皿",
+        "imgPath": "bubbleStyle1.svg",
+        "css": ""
+    },
+    
+    {
+        "name": "怪物酒馆",
+        "imgPath": "bubbleStyle4.svg",
+        "css": "border-width: 24px 16px 16px 16px;"
+    },
+    
+    {
+        "name": "影城逐梦记",
+        "imgPath": "bubbleStyle5.svg",
+        "css": "border-width: 24px 20px 22px 16px;"
+    }
+]
