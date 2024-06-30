@@ -104,12 +104,14 @@ export const onSettingWindowCreated = async view => {
     const checkVersionBtn = view.querySelector("#checkVersionBtn")
     const updateBtn = view.querySelector("#updateBtn")
 
+    const nowVersion = LiteLoader.plugins["starrail_ui"].manifest.version
+    versionText.textContent = nowVersion
+
     updateBtn.addEventListener("click", (event) => {
         plugininstaller.updateBySlug("starrail_ui")
     })
 
     checkVersionBtn.addEventListener("click", async (event) => {
-        const nowVersion = LiteLoader.plugins["starrail_ui"].manifest.version
         versionText.textContent = `正在检查更新中...`
         const newVersion = await starrail_ui.getNewVersion(nowVersion)
         versionText.textContent = `${nowVersion} (${newVersion.tip})`

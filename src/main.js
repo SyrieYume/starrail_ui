@@ -97,6 +97,6 @@ module.exports.onBrowserWindowCreated = window => {
                     updateConfig(window.webContents, newConfig)
             }, 400))
 
-            watchFileChange(window.webContents)
+            // watchFileChange(window.webContents)
     });
 }
