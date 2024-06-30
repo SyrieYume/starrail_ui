@@ -38,12 +38,14 @@
 /* 让 窗口右上角的按钮 和 聊天界面右上角的工具栏 自动隐藏 */
 .window-control-area {
     opacity: 0;
+    border-radius: 4px;
+    margin: 4px;
     transition: all .7s ease;
 }
 
 .window-control-area:hover {
     opacity: 100%;
-    background-color: rgb(255,255,255,0.6);
+    background-color: rgb(255,255,255,0.75);
 }
 
 .chat-header .panel-header__action {
@@ -258,4 +260,25 @@
 .recent-contact-item .list-item__title .main-info {
     color: rgb(200,200,200) !important;
     font-size: 0.95rem;
+}
+
+.sidebar-nav {
+    background-color: rgb(0,0,0,0.5) !important;
+}
+
+.sidebar-nav .q-icon  {
+    color: rgb(200,200,200);
+}
+
+.chat-func-bar .q-icon, .func-bar .q-icon{
+    color: rgb(62, 46, 14) !important;
+}
+
+.qq-editor > *{
+    color: black;
+    caret-color: black;
+}
+
+.window-control-area .q-icon {
+    color: black;
 }

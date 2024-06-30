@@ -23,6 +23,22 @@ function updateConfig(webContents, newConfig) {
     saveConfig()
 }
 
+// 监听文件修改，方便开发时调试
+function watchFileChange(webContents) {
+    fs.watch(path.join(__dirname, "config.js"), "utf-8", 
+        debounce(() => {
+            delete require.cache[require.resolve(path.join(__dirname, "config.js"))]
+            config = require('./config.js')
+            updateStyle(webContents)
+        }, 400)
+    )
+
+    fs.watch(path.join(__dirname, "style.css"), "utf-8", 
+        debounce(() => {
+            updateStyle(webContents)
+        }, 400)
+    )
+}
 
 // 保存配置文件(限制每秒最多只能写入一次)
 const saveConfig = debounce(saveConfigFile, 1000)
@@ -80,5 +96,7 @@ module.exports.onBrowserWindowCreated = window => {
                 debounce((event, newConfig) => {
                     updateConfig(window.webContents, newConfig)
             }, 400))
+
+            watchFileChange(window.webContents)
     });
 }
