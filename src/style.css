@@ -81,11 +81,11 @@
 
 
 /* 聊天界面顶部区域 右边的工具栏 自动隐藏 */
-.chat-header .panel-header__action {
+.chat-header .panel-header__action .q-icon{
     opacity: 0;
 }
 
-.chat-header:hover .panel-header__action {
+.chat-header:hover .panel-header__action .q-icon{
     opacity: 100%;
     transition: all .7s ease;
 }
