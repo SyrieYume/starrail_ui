@@ -24,7 +24,7 @@ function applyBubbleStyle(bubbleIndex, styleData){
             border-image-width: 40px 48px;
             border-image-repeat: stretch;
             margin-right: -2px;
-            margin-top: 0px;
+            margin-top: -10px;
             ${bubble.css}
         }
         .message-container--align-right .message-content {
