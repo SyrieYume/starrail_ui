@@ -14,19 +14,21 @@ function applyBubbleStyle(bubbleIndex, styleData){
         return styleData
     const bubble = bubbles[bubbleIndex - 1]
     return styleData.replace("/* Bubble Style */", `
-        background: none;
-        box-shadow: none;
-        border: 10px solid transparent;
-        border-radius: 0;
+            background: none;
+            box-shadow: none;
+            border: 10px solid transparent;
+            border-radius: 0;
 
-        border-image: url("appimg://${bubble.imgPath}");
-        border-image-slice: 49% fill;
-        border-image-width: 40px 48px;
-        border-image-repeat: stretch;
-        margin-right: -2px;
-        margin-top: 0px;
-        color: #f0f0f0;
-        ${bubble.css}
+            border-image: url("appimg://${bubble.imgPath}");
+            border-image-slice: 49% fill;
+            border-image-width: 40px 48px;
+            border-image-repeat: stretch;
+            margin-right: -2px;
+            margin-top: 0px;
+            ${bubble.css}
+        }
+        .message-container--align-right .message-content {
+            color: #f0f0f0;
     `)
 }
 

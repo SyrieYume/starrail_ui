@@ -144,7 +144,7 @@
 }
 
 /* 聊天气泡里面的文字样式 */
-.message-content__wrapper span, .markdown-element p{
+.message-content__wrapper span, .markdown-element p, .message-content{
     --font_size_3: 1.15rem;
     color: rgb(0,0,0);
     font-size: 1.15rem !important;
@@ -164,7 +164,7 @@
     /* Bubble Style */
 }
 
-/* 右侧聊天气泡里面的文字样式 */
+/* 右侧聊天气泡里面"@XXX"的文字样式 */
 .message-container--align-right .message-content__wrapper span {
     color: inherit !important;
 }
@@ -310,4 +310,3 @@
 .sidebar-nav .q-icon  {
     color: rgb(200,200,200);
 }
-
