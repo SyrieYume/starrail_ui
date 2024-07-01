@@ -10,7 +10,8 @@ const defaultConfig = {
     "background_blur": 8,
     "background_brightness": 50,
     "chatWindow_Opacity": 95,
-    "bubble": 0
+    "bubble": 0,
+    "displayNickname": true
 }
 
 const config = { ...defaultConfig }

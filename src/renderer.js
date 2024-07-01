@@ -10,13 +10,45 @@ starrail_ui.onUpdateStyle((event, styleData) => {
 
 starrail_ui.rendererReady()
 
+let config = await starrail_ui.getConfig()
+
+// 监听添加元素事件
+if(config["displayNickname"]){
+const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === 'childList') {
+            const addedNodes = Array.from(mutation.addedNodes)
+            addedNodes.forEach(node => {
+                if (node.className == "ml-item") {
+                    const msgContainer = node.querySelector(".message-container")
+                    if(msgContainer && !msgContainer.querySelector(".user-name")){
+                        const nicknameDiv = document.createElement('div')
+                        nicknameDiv.classList.add("user-name", "no-copy", "text-ellipsis")
+                        const span = document.createElement('span')
+                        span.classList.add("text-ellipsis")
+                        const nickname = msgContainer.querySelector(".avatar-span").getAttribute("aria-label")
+                        if(nickname)
+                            span.textContent = nickname
+                        nicknameDiv.appendChild(span)
+                        msgContainer.appendChild(nicknameDiv)
+                    }
+                    
+                }
+            })
+        }
+    })
+})
+  
+// 监控整个文档
+observer.observe(document.body, { childList: true, subtree: true });
+}
+
+
 
 // 打开设置界面时触发
 export const onSettingWindowCreated = async view => {
     // view 为 Element 对象，修改将同步到插件设置界面
     view.innerHTML = await starrail_ui.getSettingsView()
-
-    let config = await starrail_ui.getConfig()
 
     // 选择背景图片
     const text_bgPath = view.querySelector("#text_bgPath")
@@ -127,5 +159,18 @@ export const onSettingWindowCreated = async view => {
     // 前往github仓库
     view.querySelector("#gotoGithub").addEventListener("click", (event) => {
         LiteLoader.api.openExternal("https://github.com/SyrieYume/starrail_ui")
+    })
+
+    // 是否在私聊中显示昵称
+    const displayNicknameSwitch = view.querySelector("#displayNickname")
+    if(config.displayNickname)
+        displayNicknameSwitch.setAttribute("is-active", "")
+    displayNicknameSwitch.addEventListener("click", (event) => {
+        config.displayNickname = !config.displayNickname
+        if(config.displayNickname)
+            displayNicknameSwitch.setAttribute("is-active", "")
+        else
+            displayNicknameSwitch.removeAttribute("is-active")
+        starrail_ui.updateConfig(config)
     })
 }
