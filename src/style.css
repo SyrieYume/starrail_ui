@@ -64,8 +64,8 @@
 
 /* 聊天界面顶部区域 */
 .chat-header {
-    margin-top: -10px;
-    height: 80px !important;
+    margin-top: -12.5px;
+    height: 75px !important;
 }
 
 .chat-header .background-mask {
@@ -81,11 +81,11 @@
 
 
 /* 聊天界面顶部区域 右边的工具栏 自动隐藏 */
-.chat-header .panel-header__action .q-icon{
+.chat-header .bar-icon .q-icon{
     opacity: 0;
 }
 
-.chat-header:hover .panel-header__action .q-icon{
+.chat-header:hover .bar-icon .q-icon{
     opacity: 100%;
     transition: all .7s ease;
 }
@@ -125,9 +125,11 @@
     background-color: rgb(221, 221, 221, ${chatWindow_Opacity}%);
 }
 
-/* 聊天界面头像大小 */
+/* 聊天界面头像大小以及消息的外边距 */
 .message-container {
-    --avatar_size_2: 64px !important;
+    --avatar_size_2: 60px !important;
+    margin: 4px 32px;
+    padding: 0px;
 }
 
 /* 聊天气泡 */
@@ -140,7 +142,7 @@
 }
 
 .msg-content-container {
-    margin: 4px 6px;
+    margin: 2px 6px;
 }
 
 /* 聊天气泡里面的文字样式 */
@@ -169,7 +171,7 @@
     color: inherit !important;
 }
 
-.message-container:not(:has(.user-name)) .msg-content-container  {
+.message-container:not(:has(.user-name)) .message-content__wrapper  {
     margin-top: calc(var(--avatar_size_2) / 2 + 2px) !important;
 }
 
@@ -195,6 +197,12 @@
     font-weight: bold;
     color: rgb(108, 108, 108);
     margin: 2px;
+}
+
+/* 消息上方显示的一整行的时间 */
+.message__timestamp {
+    padding: 0;
+    margin: 2px 0 !important;
 }
 
 /* 提示文本左侧的图标 */
