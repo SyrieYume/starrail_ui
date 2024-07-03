@@ -10,7 +10,7 @@
 }
 
 /* 隐藏部分组件的背景色 */
-.tab-container,.two-col-layout,.two-col-layout__aside,.recent-contact,.list-toggler,.recent-contact-list {
+.tab-container,.two-col-layout,.two-col-layout__aside,.recent-contact,.list-toggler,.recent-contact-list,.chat-header,.chat-header .background-mask {
     background: none !important;
 }
 
@@ -122,19 +122,19 @@
 
 /* 聊天界面背景色 */
 .two-col-layout__main {
-    background-color: rgb(221, 221, 221, ${chatWindow_Opacity}%);
+    background-color: rgb(221, 221, 221, ${chatWindow_Opacity}%) !important;
 }
 
 /* 聊天界面头像大小以及消息的外边距 */
 .message-container {
     --avatar_size_2: 60px !important;
-    margin: 4px 32px;
+    margin: 3px 32px;
     padding: 0px;
 }
 
 /* 聊天气泡 */
 .msg-content-container:not(.mix-message__container--market-face):not(.mix-message__container--pic) {
-    background-color: rgb(237,237,237);
+    background-color: rgb(248, 248, 248);
     border-radius: 13px;
     border-top-left-radius: 2px;
     padding: 12px 17px 8px 17px;
@@ -148,6 +148,7 @@
 /* 聊天气泡里面的文字样式 */
 .message-content__wrapper span, .markdown-element p, .message-content{
     --font_size_3: 1.15rem;
+    --font_size_2: 0.9rem;
     color: rgb(0,0,0);
     font-size: 1.15rem !important;
     font-weight: bold !important;
@@ -222,7 +223,7 @@
 /* 输入区域 */
 .chat-input-area {
     box-shadow: inset 0px 2px rgb(172, 172, 172, 0.25) !important;
-    background-color: rgb(100,100,100,0.05);
+    background-color: rgb(100,100,100,0.05) !important;
 }
 
 /* 输入区域文本框内的文字样式 */
@@ -274,6 +275,9 @@
 
 /* 最近聊天列表中单个元素的样式 */
 .recent-contact-item {
+    --on_brand_primary: rgb(240,240,240) !important;
+    --on_brand_secondary: rgb(200,200,200) !important;
+    --on_bg_text: rgb(200,200,200) !important;
     border: 2px solid rgb(172, 172, 172,0.35);
     border-radius: 2px;
     margin-bottom: 8px;
@@ -317,4 +321,9 @@
 /* 最左侧侧边栏 里面的图标 */
 .sidebar-nav .q-icon  {
     color: rgb(200,200,200);
+}
+
+/* QQ超级调色盘背景 隐藏 */
+.q-miracle-background {
+    display: none;
 }

@@ -4,8 +4,9 @@
     "name": "仿星穹铁道短信UI",
     "slug": "starrail_ui",
     "description": "仿照星穹铁道中的角色短信界面的UI.",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "icon": "./res/icon.png",
+    "thumb": "./res/thumb.svg",
     "authors": [
         {
             "name": "Syrie",
