@@ -3,14 +3,14 @@
     src: url("appimg://${plugin_path}/res/StarRailFont.ttf") format("truetype");
 }
 
-/* 设置所有字体为星穹铁道同款字 
+/* 设置所有字体为星穹铁道同款
  * 字体来自星穹铁道游戏目录下的 StarRail_Data\StreamingAssets\MiHoYoSDKRes\HttpServerResources\font\zh-cn.ttf */
 * {
     font-family: "StarRailFont";
-}
+} 
 
 /* 隐藏部分组件的背景色 */
-.tab-container,.two-col-layout,.two-col-layout__aside,.recent-contact,.list-toggler,.recent-contact-list,.chat-header,.chat-header .background-mask {
+.tab-container,.two-col-layout,.two-col-layout__aside,.recent-contact,.list-toggler,.recent-contact-list,.chat-header,.chat-header .background-mask, .viewport-list__inner {
     background: none !important;
 }
 
@@ -77,6 +77,7 @@
     color: black !important;
     font-weight: bolder;
     font-size: large;
+    line-height: unset !important;
 }
 
 
@@ -137,7 +138,7 @@
     background-color: rgb(248, 248, 248);
     border-radius: 13px;
     border-top-left-radius: 2px;
-    padding: 12px 17px 8px 17px;
+    padding: 11px 17px 9px 17px;
     box-shadow: -1px 2px rgb(156,156,156);
 }
 
@@ -147,10 +148,9 @@
 
 /* 聊天气泡里面的文字样式 */
 .message-content__wrapper span, .markdown-element p, .message-content{
-    --font_size_3: 1.15rem;
-    --font_size_2: 0.9rem;
     color: rgb(0,0,0);
-    font-size: 1.15rem !important;
+    font-size: calc(var(--font_size_3) * 1.3) !important;
+    line-height: unset !important;
     font-weight: bold !important;
 }
 
@@ -186,6 +186,7 @@
     color: rgb(100, 100, 100) !important;
     font-weight: bold;
     font-size: 0.95rem;
+    line-height: unset !important;
 }
 
 .user-name {
@@ -195,6 +196,7 @@
 /* 一些提示文本，比如"XXX 撤回了一条消息" */
 .gray-tip-content.gray-tip-element {
     font-size: larger;
+    line-height: unset !important;
     font-weight: bold;
     color: rgb(108, 108, 108);
     margin: 2px;
@@ -248,6 +250,7 @@
     color: rgb(18,18,18) !important;
     font-weight: bold;
     font-size: 0.95rem;
+    line-height: unset !important;
 }
 
 /* 回到底部按钮 */
@@ -310,7 +313,8 @@
 /* 最近聊天列表 好友昵称/群名 */
 .recent-contact-item .list-item__title .main-info {
     color: rgb(200,200,200) !important;
-    font-size: 0.95rem;
+    font-size: calc(var(--font_size_3) * 1.08);
+    line-height: unset !important;
 }
 
 /* 最左侧侧边栏 */

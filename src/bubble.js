@@ -23,10 +23,14 @@ function applyBubbleStyle(bubbleIndex, styleData){
             border-image-slice: 49% fill;
             border-image-width: 40px 48px;
             border-image-repeat: stretch;
-            margin-right: -2px;
-            margin-top: -10px;
             ${bubble.css}
         }
+
+        .message-container--align-right .message-content__wrapper:has(.msg-content-container:not(.mix-message__container--market-face):not(.mix-message__container--pic)) {
+            margin-right: -2px;
+            margin-top: -10px;
+        }
+
         .message-container--align-right .message-content {
             color: #f0f0f0;
     `)

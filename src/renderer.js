@@ -50,6 +50,8 @@ export const onSettingWindowCreated = async view => {
     // view 为 Element 对象，修改将同步到插件设置界面
     view.innerHTML = await starrail_ui.getSettingsView()
 
+    config = await starrail_ui.getConfig()
+
     // 选择背景图片
     const text_bgPath = view.querySelector("#text_bgPath")
     text_bgPath.textContent = config.background_img

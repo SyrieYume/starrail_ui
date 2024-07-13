@@ -9,11 +9,15 @@ let { bubbles, applyBubbleStyle } = require("./bubble.js")
 
 // 更新样式
 function updateStyle(webContents) {
-    console.log("[starrail_ui] updateStyle")
-    let styleData = fs.readFileSync(path.join(__dirname, "style.css"), "utf-8")
-    styleData = applyConfig(styleData)
-    styleData = applyBubbleStyle(config.bubble, styleData)
-    webContents.send("starrail_ui.updateStyle", styleData)
+    if(/^app:\/\/\.\/renderer\/index\.html.+\/main\/message$/.test(webContents.getURL())){
+        console.log("[starrail_ui] updateStyle")
+        let styleData = fs.readFileSync(path.join(__dirname, "style.css"), "utf-8")
+        styleData = applyConfig(styleData)
+        styleData = applyBubbleStyle(config.bubble, styleData)
+        webContents.send("starrail_ui.updateStyle", styleData)
+        return true
+    }
+    return false
 }
 
 // 更新配置
@@ -25,14 +29,6 @@ function updateConfig(webContents, newConfig) {
 
 // 监听文件修改，方便开发时调试
 function watchFileChange(webContents) {
-    fs.watch(path.join(__dirname, "config.js"), "utf-8", 
-        debounce(() => {
-            delete require.cache[require.resolve(path.join(__dirname, "config.js"))]
-            config = require('./config.js')
-            updateStyle(webContents)
-        }, 400)
-    )
-
     fs.watch(path.join(__dirname, "style.css"), "utf-8", 
         debounce(() => {
             updateStyle(webContents)
@@ -44,9 +40,14 @@ function watchFileChange(webContents) {
 const saveConfig = debounce(saveConfigFile, 1000)
 
 // 监听渲染进程的事件
-ipcMain.on("starrail_ui.rendererReady", (event, message) => {
-    const window = BrowserWindow.fromWebContents(event.sender)
-    updateStyle(window.webContents)
+ipcMain.on("starrail_ui.rendererReady", async (event, message) => {
+    let count = 0
+    let intervalId = setInterval(() => {
+        const window = BrowserWindow.fromWebContents(event.sender)
+        console.log(window.webContents.getURL() + " rendererReady count = " + count)
+        if((count++) > 10 || updateStyle(window.webContents)) 
+            clearInterval(intervalId)
+    }, 1000)
 })
 
 ipcMain.handle("starrail_ui.getConfig", (event, message) => {
@@ -89,8 +90,8 @@ module.exports.onBrowserWindowCreated = window => {
     // window 为 Electron 的 BrowserWindow 实例
 
     window.on("ready-to-show", () => {
-        const url = window.webContents.getURL();
-        if (url.includes("app://./renderer/index.html")) 
+        const url = window.webContents.getURL()
+        if (url.startsWith("app://./renderer/index.html")) 
             // 监听配置更新            
             ipcMain.on("starrail_ui.updateConfig", 
                 debounce((event, newConfig) => {
