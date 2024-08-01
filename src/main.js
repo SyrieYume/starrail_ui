@@ -44,7 +44,6 @@ ipcMain.on("starrail_ui.rendererReady", async (event, message) => {
     let count = 0
     let intervalId = setInterval(() => {
         const window = BrowserWindow.fromWebContents(event.sender)
-        console.log(window.webContents.getURL() + " rendererReady count = " + count)
         if((count++) > 10 || updateStyle(window.webContents)) 
             clearInterval(intervalId)
     }, 1000)

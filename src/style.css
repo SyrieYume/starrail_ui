@@ -155,8 +155,12 @@
 }
 
 
+.container--self:focus {
+    background-color: rgb(182, 182, 182, 0.55) !important;
+}
+
 /* 右侧聊天气泡，也就是自己发的内容 */
-.message-container--align-right .msg-content-container:not(.mix-message__container--market-face):not(.mix-message__container--pic) {
+.container--self:not(.mix-message__container--market-face):not(.mix-message__container--pic) {
     background-color: rgb(209,189,149);
     border-top-left-radius: 12px;
     border-top-right-radius: 2px;

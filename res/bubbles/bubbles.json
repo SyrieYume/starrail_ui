@@ -2,30 +2,45 @@
     {
         "name": "兔子在哪里？",
         "imgPath": "bubbleStyle2.svg",
+        "textColor": "#f0f0f0",
         "css": "border-width: 20px 8px 8px 18px;"
     },
     
     {
         "name": "次元扑满",
         "imgPath": "bubbleStyle3.svg",
+        "textColor": "#f0f0f0",
         "css": "border-width: 18px 8px 8px 16px;"
     },
     
     {
         "name": "星体培养皿",
         "imgPath": "bubbleStyle1.svg",
+        "textColor": "#f0f0f0",
         "css": ""
     },
     
     {
         "name": "怪物酒馆",
         "imgPath": "bubbleStyle4.svg",
+        "textColor": "#f0f0f0",
         "css": "border-width: 24px 16px 16px 16px;"
     },
     
     {
         "name": "影城逐梦记",
         "imgPath": "bubbleStyle5.svg",
+        "textColor": "#f0f0f0",
         "css": "border-width: 24px 20px 22px 16px;"
+    },
+    
+    {
+        "name": "光阴莫负",
+        "imgPath": "bubbleStyle6/main.png",
+        "part1": "bubbleStyle6/part1.png",
+        "part2": "bubbleStyle6/part2.png",
+        "textColor": "#864756",
+        "css": "border: none !important; padding: 22px 30px 16px 42px; background-size: 53px 45px, 27px 36px; margin: 6px 0 2px 0; background-image: url('appimg://${bubblesPath}/${part1}'), url('appimg://${bubblesPath}/${part2}'); background-position: top left, bottom right; background-repeat: no-repeat;",
+        "before": "border-image: url('appimg://${imgPath}'); content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; border-image-slice: 50 60 40 60 fill; border-image-width: 33px 40px 27px 40px; border-width: 16px 16px 12px 32px; pointer-events: none;"
     }
 ]

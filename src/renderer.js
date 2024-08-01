@@ -118,17 +118,30 @@ export const onSettingWindowCreated = async view => {
             selectBubble(bubbleContainerDiv)
         bubbleContainerDiv.addEventListener("click", onBubbleClicked)
 
+        const bubbleWrapper = document.createElement("div")
+        bubbleWrapper.classList.add("bubbleWrapper")
+
         const bubbleDiv = document.createElement("div")
         bubbleDiv.classList.add("bubble")
-        bubbleDiv.style = bubbles[i].css
-        bubbleDiv.style.borderImage = `url("appimg://${bubbles[i].imgPath}")`
+        bubbleDiv.style = `
+            color: ${bubbles[i].textColor};
+            border-image: url("appimg://${bubbles[i].imgPath}");
+            ${bubbles[i].css}
+        `
         bubbleDiv.textContent = "你好"
 
         const bubbleName = document.createElement("b")
         bubbleName.classList.add("bubbleName")
         bubbleName.textContent = bubbles[i].name
 
-        bubbleContainerDiv.appendChild(bubbleDiv)
+        if("before" in bubbles[i]){
+            const bubbleBefore = document.createElement("div")
+            bubbleBefore.style = bubbles[i].before
+            bubbleWrapper.appendChild(bubbleBefore)
+        }
+
+        bubbleWrapper.appendChild(bubbleDiv)
+        bubbleContainerDiv.appendChild(bubbleWrapper)
         bubbleContainerDiv.appendChild(bubbleName)
         bubblesList.appendChild(bubbleContainerDiv)
     }
